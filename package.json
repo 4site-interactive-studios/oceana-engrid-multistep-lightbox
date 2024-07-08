@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "description": "RAN Multistep Lightbox",
-  "name": "ran-multistep-lightbox",
+  "description": "Oceana Multistep Lightbox",
+  "name": "oceana-multistep-lightbox",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
@@ -10,19 +10,19 @@
     "serve": "webpack serve"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
-    "@webpack-cli/generators": "^1.1.0",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.2",
-    "postcss": "^8.3.6",
-    "postcss-loader": "^6.1.1",
-    "postcss-preset-env": "^7.4.1",
-    "sass": "^1.35.2",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.2.1",
-    "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss": "^8.4.39",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.6.0",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
   }
 }

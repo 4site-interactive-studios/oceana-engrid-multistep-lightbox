@@ -15,6 +15,7 @@ export class DonationLightbox {
       logo_position_bottom: 0,
       title: "",
       paragraph: "",
+      viewmore: false,
       footer: "",
       bg_color: "#0a0a0a",
       txt_color: "#ffffff",
@@ -185,20 +186,26 @@ export class DonationLightbox {
             ? `<img class="dl-mobile-logo" src="${this.options.logo}" alt="${this.options.title}">`
             : ""
         }
-        <div class="dl-content">
+        <div class="dl-content" style="background-color: ${
+          this.options.bg_color
+        }; color: ${this.options.txt_color}">
           <div class="left" style="background-color: ${
             this.options.bg_color
           }; color: ${this.options.txt_color}">
             ${
               this.options.logo
-                ? `<img class="dl-logo" src="${this.options.logo}" alt="${this.options.title}" style="top: ${this.options.logo_position_top}; left: ${this.options.logo_position_left}; bottom: ${this.options.logo_position_bottom}; right: ${this.options.logo_position_right}; filter: brightness(0) invert(1);">`
+                ? `<img class="dl-logo" src="${this.options.logo}" alt="${this.options.title}" style="top: ${this.options.logo_position_top}; left: ${this.options.logo_position_left}; bottom: ${this.options.logo_position_bottom}; right: ${this.options.logo_position_right};">`
                 : ""
             }
-            <a href="#" class="dl-close-viewmore">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-                <path fill="currentColor" d="M7.214.786c.434-.434 1.138-.434 1.572 0 .433.434.433 1.137 0 1.571L4.57 6.572h10.172c.694 0 1.257.563 1.257 1.257s-.563 1.257-1.257 1.257H4.229l4.557 4.557c.433.434.433 1.137 0 1.571-.434.434-1.138.434-1.572 0L0 8 7.214.786z"></path>
-              </svg>
-            </a>
+            ${
+              this.options.viewmore
+                ? `<a href="#" class="dl-close-viewmore">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M7.214.786c.434-.434 1.138-.434 1.572 0 .433.434.433 1.137 0 1.571L4.57 6.572h10.172c.694 0 1.257.563 1.257 1.257s-.563 1.257-1.257 1.257H4.229l4.557 4.557c.433.434.433 1.137 0 1.571-.434.434-1.138.434-1.572 0L0 8 7.214.786z"></path>
+                    </svg>
+                  </a>`
+                : ""
+            }
             <div class="dl-container" style="background-color: ${
               this.options.bg_color
             }; color: ${this.options.txt_color}">
@@ -217,9 +224,12 @@ export class DonationLightbox {
                 <p class="dl-paragraph" style="color: ${
                   this.options.txt_color
                 }">${this.options.paragraph}</p>
-                <a class="dl-viewmore" href="#"style="color: ${
-                  this.options.txt_color
-                }; border-color: ${this.options.txt_color}">View More</a>
+                ${
+                  this.options.viewmore
+                    ? `<a class="dl-viewmore" href="#"style="color: ${this.options.txt_color}; border-color: ${this.options.txt_color}">View More</a>`
+                    : ""
+                }
+                
               </div>
               <div class="dl-celebration">
                 <div class="frame frame1">
@@ -258,17 +268,19 @@ export class DonationLightbox {
       }
     });
 
-    const closeViewMore = overlay.querySelector(".dl-close-viewmore");
-    closeViewMore.addEventListener("click", (e) => {
-      e.preventDefault();
-      overlay.querySelector(".left").classList.remove("view-more");
-    });
+    if (this.options.viewmore) {
+      const closeViewMore = overlay.querySelector(".dl-close-viewmore");
+      closeViewMore.addEventListener("click", (e) => {
+        e.preventDefault();
+        overlay.querySelector(".left").classList.remove("view-more");
+      });
 
-    const viewmore = overlay.querySelector(".dl-viewmore");
-    viewmore.addEventListener("click", (e) => {
-      e.preventDefault();
-      overlay.querySelector(".left").classList.add("view-more");
-    });
+      const viewmore = overlay.querySelector(".dl-viewmore");
+      viewmore.addEventListener("click", (e) => {
+        e.preventDefault();
+        overlay.querySelector(".left").classList.add("view-more");
+      });
+    }
 
     const videoElement = overlay.querySelector("video");
     if (videoElement) {
