@@ -28,6 +28,7 @@ export class DonationLightbox {
       gtm_close_event_name: "donation_lightbox_closed",
       gtm_suppressed_event_name: "donation_lightbox_supressed",
       confetti: ["#0a0a0a", "#FFFFFF", "#6a9913"],
+      id: ""
     };
     this.donationinfo = {};
     this.options = { ...this.defaultOptions };
@@ -88,6 +89,9 @@ export class DonationLightbox {
     }
     if ("logo_position_bottom" in data) {
       this.options.logo_position_bottom = data.logo_position_bottom;
+    }
+    if ("id" in data) {
+      this.options.id = data.id;
     }
   }
   init() {
@@ -168,7 +172,7 @@ export class DonationLightbox {
       href = new URL(event);
     }
     // Delete overlay if exists
-    if (this.overlay) {
+    if (this.overlay && this.overlay.parentNode) {
       this.overlay.parentNode.removeChild(this.overlay);
     }
     this.overlayID = "foursite-" + Math.random().toString(36).substring(7);
@@ -259,6 +263,7 @@ export class DonationLightbox {
     overlay.id = this.overlayID;
     overlay.classList.add("is-hidden");
     overlay.classList.add("foursiteDonationLightbox");
+    overlay.setAttribute("promotion-id", this.options.id);
     overlay.innerHTML = markup;
     const closeButton = overlay.querySelector(".dl-button-close");
     closeButton.addEventListener("click", this.close.bind(this));
