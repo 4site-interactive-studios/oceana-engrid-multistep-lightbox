@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../engrid-oceana"
+    },
+    {
+      "path": "../engrid-standalone-multistep-lightbox"
+    },
+    {
+      "path": "../engrid"
+    }
+  ],
+  "settings": {}
+}
